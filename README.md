@@ -60,7 +60,7 @@ El tiempo de trabajo finaliza en 1 min...
 ## Windows
 Por implementar...
 
-## Cómo funciona
+## Cómo funciona [en construcción...]
 Revisa aquí el tutorial Python: De saber nada a saber algo en 15 minutos, o estos excelentes tutoriales:
 
 El código explicado:
