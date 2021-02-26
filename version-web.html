@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+
+<html>
+  <head><title>Procrastinador inteligente</title>
+  </head>
+
+  <header><h1>El Procrastinador inteligente</h1></header>
+
+  <body>  
+    <ul>
+      <li>Previa: 3 s</li>
+      <li>Tiempo de trabajo: 3 s</li>
+      <li>Tiempo de procrastinación: 3 s</li>    
+      <br><br>
+      
+    <div>
+      <button type="button" id="iniciar" onclick="myFunction()">Iniciar</button>
+      <button type="button" id="reiniciar" onclick="reiniciar()">Reiniciar</button>
+    </div>
+
+    <section>
+      <h3 id="estado">Estado: Inactivo</h3>
+    </section>
+
+  
+    <script>
+      // import java.util.Scanner;
+
+      var t;
+      var timeout = 3000;
+
+      /*
+      Scanner input = new Scanner(System.in);
+      System.out.print("Numero");
+      int number = input.nextInt();
+      */
+      
+      function myFunction() {
+	  document.getElementById("iniciar").innerHTML="Detener";
+	  document.getElementById("iniciar").onclick=detener;	  
+	  
+	  document.getElementById("estado").innerHTML="Estado: Previa";
+          t = setTimeout("printTrabajo()", timeout);
+      }
+
+      function printTrabajo() {
+	  document.getElementById("estado").innerHTML="Estado: Trabajando";
+          t = setTimeout("printProcrastinacion()", timeout);
+      }
+
+      function printProcrastinacion() {
+	  document.getElementById("estado").innerHTML="Estado: Procrastinando inteligentemente";
+          t = setTimeout("printTrabajo()", timeout);
+      }
+
+      function reiniciar() {
+	  clearTimeout(t)
+	  myFunction()
+      }
+
+      function detener() {
+	  clearTimeout(t)
+	  document.getElementById("estado").innerHTML="Estato: Inactivo";
+	  document.getElementById("iniciar").innerHTML="Iniciar";
+	  document.getElementById("iniciar").onclick=myFunction;	  	  
+	  
+      }
+
+	  
+    </script>
+    
+  </body>
+</html>
+
+
+
+  

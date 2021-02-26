@@ -22,8 +22,6 @@ os.chdir(dname)
 #    print("module 'time' is not installed")
 #    install("time") # the install function from the question
 
-
-
 try:
     parametros = pickle.load(open('configuracion/parametrosActuales.config', 'rb'))
 except FileNotFoundError:
@@ -104,19 +102,22 @@ playsound('sonidos/bosque.mp3')
 print("\n¡Trabaja!\nIteración # {}".format(iteracion))
 playsound('sonidos/alarma.mp3')
 
-while True:
-    # Tiempo de trabajo
-    time.sleep((work - 1) * 60) 
-    print("El tiempo de trabajo finaliza en 1 min...")
-    playsound('sonidos/bosque.mp3')
 
-    # Tiempo de descanso
-    print("\nDescansa...")
-    print("El tiempo de descanso finaliza en 10 s...")
-    time.sleep((descanso * 60) - 10)     
-    playsound('sonidos/alarma.mp3')
+
+
+while True:
+    print("Trabaja!")
+    t0 = time.time()    
+    while (time.time() - t0) < (work * 60):
+        time.sleep(0.5)
+
+    print("Descansa!")
+    t0 = time.time()
+    while (time.time() - t0) < (descanso * 60):
+        time.sleep(0.5)
+
     iteracion += 1
 
     # Nueva iteración
-    print("\n¡Trabaja!\nIteración # {}".format(iteracion))
+    print("\n\nIteración # {}".format(iteracion))
 
