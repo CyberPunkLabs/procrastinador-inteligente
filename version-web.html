@@ -6,20 +6,26 @@
 
   <header><h1>El Procrastinador inteligente</h1></header>
 
-  <body>  
+  <body>
+
+    <p><b>Configuración:</b></p>
     <ul>
-      <li>Previa: 3 s</li>
-      <li>Tiempo de trabajo: 3 s</li>
-      <li>Tiempo de procrastinación: 3 s</li>    
+      <li>Previa: 3s</li>
+      <li>Tiempo de trabajo: 10s</li>
+      <li>Tiempo de procrastinación: 5s</li>    
       <br><br>
       
     <div>
       <button type="button" id="iniciar" onclick="myFunction()">Iniciar</button>
       <button type="button" id="reiniciar" onclick="reiniciar()">Reiniciar</button>
+      <button type="button" id="opciones">Opciones</button>      
     </div>
 
     <section>
       <h3 id="estado">Estado: Inactivo</h3>
+      <p id="iteracion">Iteración #</p>
+      <p style="font-size:12px;">Copyleft Laboratorios Ciberpunk<br>
+      Somos una red de sistemas nerviosos distribuidos alrededor del globo</p>
     </section>
 
   
@@ -27,7 +33,10 @@
       // import java.util.Scanner;
 
       var t;
-      var timeout = 3000;
+      var previa = 3000;
+      var trabajo = 10000;
+      var procrastinacion = 5000;
+      var iteracion = 1;
 
       /*
       Scanner input = new Scanner(System.in);
@@ -39,23 +48,27 @@
 	  document.getElementById("iniciar").innerHTML="Detener";
 	  document.getElementById("iniciar").onclick=detener;	  
 	  
-	  document.getElementById("estado").innerHTML="Estado: Previa";
-          t = setTimeout("printTrabajo()", timeout);
+	  document.getElementById("estado").innerHTML="Estado: Previa (" + previa / 1000 + "s)";
+          t = setTimeout("printTrabajo()", previa);
       }
 
       function printTrabajo() {
-	  document.getElementById("estado").innerHTML="Estado: Trabajando";
-          t = setTimeout("printProcrastinacion()", timeout);
+	  document.getElementById("iteracion").innerHTML="Iteración # " + iteracion;	  
+	  document.getElementById("estado").innerHTML="Estado: Trabajando (" + trabajo / 1000 + "s)";
+          t = setTimeout("printProcrastinacion()", trabajo);
+
+	  iteracion++;	  
       }
 
       function printProcrastinacion() {
-	  document.getElementById("estado").innerHTML="Estado: Procrastinando inteligentemente";
-          t = setTimeout("printTrabajo()", timeout);
+	  document.getElementById("estado").innerHTML="Estado: Procrastinando inteligentemente (" + procrastinacion / 1000 + "s)";
+          t = setTimeout("printTrabajo()", procrastinacion);
       }
 
       function reiniciar() {
 	  clearTimeout(t)
 	  myFunction()
+	  var iteracion = 1;	  
       }
 
       function detener() {
@@ -63,7 +76,7 @@
 	  document.getElementById("estado").innerHTML="Estato: Inactivo";
 	  document.getElementById("iniciar").innerHTML="Iniciar";
 	  document.getElementById("iniciar").onclick=myFunction;	  	  
-	  
+	  var iteracion = 1;	  
       }
 
 	  
